@@ -1,25 +1,38 @@
-var katzDeli = [];
+katz_deli = [] 
 
-function takeANumber (deliLine, newPerson) {
-  deliLine.push(newPerson);
-  return `Welcome, ${newPerson}. You are number ${deliLine.length} in line.`;
-}
+def take_a_number(array, name)
+  array.push(name)
+  position = array.index(name)
+  puts "Welcome, #{name}. You are number #{array.index(name)+1} in line."
+  return name, position 
+end 
 
-function nowServing (deliLine){
-  if (deliLine.length === 0)
-    return "There is nobody waiting to be served!";
-  else
-    return `Currently serving ${deliLine.shift()}.`;
-}
+take_a_number(katz_deli, "Grace")
+take_a_number(katz_deli, "Tom")
+take_a_number(katz_deli, "Alan")
 
-function currentLine(deliLine){
-  if (deliLine.length === 0)
-    return "The line is currently empty.";
-  else {
-    var lineOut = "The line is currently: ";
-    for (var i = 0; i <= deliLine.length-1; i++){
-      lineOut += String(i+1) +". " +deliLine[i]+", ";
-    }
-    return lineOut.slice(0,lineOut.length-2);
-  }
-}
+def line(array) 
+  if array.length == 0 
+    puts "The line is currently empty."
+  else 
+    message = "The line is currently:"
+    
+  array.each_with_index do |value, index| 
+    message += " #{index.to_i+1}. #{value}"
+  end 
+  puts "#{message}"
+  end 
+end 
+ 
+line(katz_deli)
+
+
+def now_serving(array)
+  if array.empty? == true 
+    puts "There is nobody waiting to be served!"
+  elsif array.empty? == false 
+    puts "Currently serving #{array.shift}."
+  end 
+end 
+
+now_serving(katz_deli)
